@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block content %}
+<div class="container mt-3">
+  {% with errors = get_flashed_messages() %} {% if errors %}
+  <div class="alert alert-danger">
+    <h5>Oops! Looks like you made a mistake:</h5>
+    <ul>
+      {% for error_message in errors %}
+      <li>{{ error_message }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %} {% endwith %}
+  <h1>Welcome Back!</h1>
+  <form action="/login" method="post">
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label"> Email: </label>
+      <input
+        type="text"
+        class="form-control"
+        name="email"
+        id="exampleInputPassword1"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password:</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        id="inputPassword5"
+        aria-labelledby="passwordHelpBlock"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Login</button>
+  </form>
+  <a href="/"> Don't have an account? Sign up </a>
+  {% endblock %}
+</div>
